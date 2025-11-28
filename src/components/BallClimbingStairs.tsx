@@ -2,7 +2,7 @@
 
 export default function BallClimbingStairs() {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center">
+    <div className="absolute bottom-8 right-8">
       <div className="loader"></div>
     </div>
   )
