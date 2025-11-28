@@ -9,7 +9,7 @@
 }
 
 .plantGrowthContainer * {
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .box {
