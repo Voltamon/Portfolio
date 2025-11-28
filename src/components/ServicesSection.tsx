@@ -41,6 +41,7 @@ export default function ServicesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const [activeService, setActiveService] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -68,6 +69,45 @@ export default function ServicesSection() {
 
     return () => ctx.revert();
   }, []);
+
+  useEffect(() => {
+    if (!titleRef.current) return;
+
+    // Split text into words
+    const text = titleRef.current.textContent || ""
+    titleRef.current.innerHTML = text
+      .split(" ")
+      .map((word) => `<span class="inline-block mr-4">${word}</span>`)
+      .join("")
+
+    const words = titleRef.current.querySelectorAll("span")
+
+    // Animate title when it enters viewport
+    gsap.fromTo(
+      words,
+      {
+        opacity: 0,
+        y: 50,
+        rotationY: -45,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        rotationY: 0,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    )
+  }, [])
 
   // Generate stretched swirling thread path with organic curves
   const generateThreadPath = () => {
@@ -124,7 +164,11 @@ export default function ServicesSection() {
 
       <div className="sticky top-0 h-screen flex items-center justify-center px-8">
         <div className="max-w-7xl w-full">
-          <h2 className="editorial-title text-5xl md:text-7xl text-[#0A1931] mb-16 text-center !w-full !h-5">
+          <h2
+            ref={titleRef}
+            className="editorial-title text-5xl md:text-7xl text-[#0A1931] mb-16 text-center !w-full !h-5"
+            style={{ perspective: "1000px" }}
+          >
             Our Services
           </h2>
 
