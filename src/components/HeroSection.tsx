@@ -10,7 +10,7 @@ export default function HeroSection() {
       className="relative w-full h-screen flex items-center justify-start overflow-hidden bg-[#64748B]">
 
       <div className="relative z-10 px-8 md:px-16 lg:px-24 max-w-2xl">
-        <h1 className="editorial-title text-5xl md:text-7xl lg:text-8xl text-[#FDF8F3] mb-6 !w-[141%] !h-[189px]">
+        <h1 className="editorial-title text-5xl md:text-7xl lg:text-8xl text-[#FDF8F3] mb-6 !w-full !h-[189px]">
           Beschi SSC Ltd
         </h1>
         <TypewriterEffect />
