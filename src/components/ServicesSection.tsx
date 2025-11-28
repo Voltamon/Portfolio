@@ -83,18 +83,11 @@ export default function ServicesSection() {
 
     for (let i = 1; i <= points; i++) {
       const t = i / points;
-
-      // Horizontal progression (stretched across)
       const x = startX + (endX - startX) * t;
-
-      // Swirling motion with varying amplitude
       const swirlFrequency = numSwirls * Math.PI * 2;
-      const amplitudeVar = amplitude * Math.sin(t * Math.PI); // Amplitude increases then decreases
+      const amplitudeVar = amplitude * Math.sin(t * Math.PI);
       const y = startY + amplitudeVar * Math.sin(t * swirlFrequency + t * Math.PI);
-
-      // Add secondary wave for more organic feel
       const secondaryWave = 15 * Math.sin(t * 8 * Math.PI);
-
       path += ` L ${x} ${y + secondaryWave}`;
     }
 
@@ -112,12 +105,10 @@ export default function ServicesSection() {
 
     return services.map((_, index) => {
       const t = index / (services.length - 1);
-
       const x = startX + (endX - startX) * t;
       const amplitudeVar = amplitude * Math.sin(t * Math.PI);
       const y = startY + amplitudeVar * Math.sin(t * numSwirls * Math.PI * 2 + t * Math.PI);
       const secondaryWave = 15 * Math.sin(t * 8 * Math.PI);
-
       return { x, y: y + secondaryWave };
     });
   };
@@ -129,7 +120,7 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="min-h-[300vh] bg-[#FDF8F3] relative">
+      className="relative min-h-[300vh] bg-[#FDF8F3]">
 
       <div className="sticky top-0 h-screen flex items-center justify-center px-8">
         <div className="max-w-7xl w-full">
@@ -138,7 +129,6 @@ export default function ServicesSection() {
           </h2>
 
           <div className="flex flex-col items-center gap-8">
-            {/* Stretched Swirling Thread SVG */}
             <div className="relative w-full max-w-4xl h-[250px]">
               <svg
                 ref={svgRef}
@@ -146,7 +136,6 @@ export default function ServicesSection() {
                 className="!w-full !h-full"
                 preserveAspectRatio="xMidYMid meet">
 
-                {/* Background thread (faded) */}
                 <path
                   d={generateThreadPath()}
                   stroke="#0A1931"
@@ -156,8 +145,6 @@ export default function ServicesSection() {
                   strokeLinejoin="round"
                   opacity="0.2" />
 
-                
-                {/* Animated thread (draws with scroll) */}
                 <path
                   ref={pathRef}
                   d={generateThreadPath()}
@@ -171,8 +158,6 @@ export default function ServicesSection() {
                   className="transition-all duration-100 ease-linear"
                   filter="url(#glow)" />
 
-                
-                {/* Glowing highlight that moves with scroll */}
                 <circle
                   cx={servicePositions[activeService]?.x || 100}
                   cy={servicePositions[activeService]?.y || 300}
@@ -181,16 +166,13 @@ export default function ServicesSection() {
                   opacity="0.3"
                   className="transition-all duration-500 ease-out"
                   filter="url(#softGlow)">
-
                   <animate
                     attributeName="r"
                     values="20;25;20"
                     dur="2s"
                     repeatCount="indefinite" />
-
                 </circle>
                 
-                {/* Service markers on thread */}
                 {services.map((_, index) => {
                   const pos = servicePositions[index];
                   const isActive = index === activeService;
@@ -198,7 +180,6 @@ export default function ServicesSection() {
 
                   return (
                     <g key={index}>
-                      {/* Outer ring for active service */}
                       {isActive &&
                       <circle
                         cx={pos.x}
@@ -209,23 +190,19 @@ export default function ServicesSection() {
                         strokeWidth="2"
                         opacity="0.8"
                         className="transition-all duration-500">
-
                           <animate
                           attributeName="r"
                           values="18;24;18"
                           dur="1.5s"
                           repeatCount="indefinite" />
-
                           <animate
                           attributeName="opacity"
                           values="0.8;0.4;0.8"
                           dur="1.5s"
                           repeatCount="indefinite" />
-
                         </circle>
                       }
                       
-                      {/* Main marker */}
                       <circle
                         cx={pos.x}
                         cy={pos.y}
@@ -236,8 +213,6 @@ export default function ServicesSection() {
                         className="transition-all duration-500"
                         opacity={isPassed || isActive ? 1 : 0.4} />
 
-                      
-                      {/* Center dot */}
                       {(isActive || isPassed) &&
                       <circle
                         cx={pos.x}
@@ -245,13 +220,10 @@ export default function ServicesSection() {
                         r={isActive ? 5 : 3}
                         fill="#FDF8F3"
                         className="transition-all duration-500" />
-
                       }
                     </g>);
-
                 })}
                 
-                {/* SVG Filters */}
                 <defs>
                   <linearGradient id="threadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#0A1931" stopOpacity="0.6" />
@@ -279,7 +251,6 @@ export default function ServicesSection() {
               </svg>
             </div>
 
-            {/* Service text revealed below */}
             <div className="w-full max-w-3xl min-h-[180px] flex items-center justify-center">
               <motion.div
                 key={activeService}
@@ -296,7 +267,6 @@ export default function ServicesSection() {
                   {services[activeService].description}
                 </p>
                 
-                {/* Progress indicator */}
                 <div className="flex gap-3 justify-center mt-6 !opacity-0">
                   {services.map((_, index) =>
                   <div
@@ -308,7 +278,6 @@ export default function ServicesSection() {
                     "bg-[#0A1931] w-12" :
                     "bg-[#0A1931]/30 w-10"}`
                     } />
-
                   )}
                 </div>
               </motion.div>
@@ -316,6 +285,19 @@ export default function ServicesSection() {
           </div>
         </div>
       </div>
+      
+      {/* Curvaceous border at bottom transitioning to Contact section */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] pointer-events-none">
+        <svg 
+          className="relative block w-full h-[80px] md:h-[120px]" 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,60 C250,20 500,90 750,50 C900,30 1050,70 1200,40 L1200,120 L0,120 Z" 
+            fill="#0d9488"
+          />
+        </svg>
+      </div>
     </section>);
-
 }

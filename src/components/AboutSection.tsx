@@ -115,7 +115,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="min-h-screen bg-[#0A1931] py-24 px-8 md:px-16 lg:px-24"
+      className="relative min-h-screen bg-[#0A1931] py-24 px-8 md:px-16 lg:px-24"
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div ref={textRef} className="space-y-6">
@@ -146,6 +146,20 @@ export default function AboutSection() {
           </div>
           <div className="gradient-overlay absolute inset-0 bg-gradient-to-t from-[#0A1931] to-transparent" />
         </div>
+      </div>
+      
+      {/* Curvaceous border at bottom transitioning to Services section */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+        <svg 
+          className="relative block w-full h-[80px] md:h-[120px]" 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,30 C200,80 400,10 600,40 C800,70 1000,20 1200,50 L1200,120 L0,120 Z" 
+            fill="#FDF8F3"
+          />
+        </svg>
       </div>
     </section>
   )
