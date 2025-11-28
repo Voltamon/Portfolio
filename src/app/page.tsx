@@ -35,7 +35,7 @@ export default function Home() {
     <main className="relative">
       <Navigation />
       <HeroSection />
-      <div ref={contentRef} className="relative z-10 bg-[#FDF8F3]" style={{ transform: 'translateY(100vh)' }}>
+      <div ref={contentRef} className="relative z-0 bg-[#FDF8F3]" style={{ transform: 'translateY(100vh)' }}>
         <AboutSection />
         <ServicesSection />
         <ContactSection />
