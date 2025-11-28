@@ -6,6 +6,7 @@ import styles from "./PlantGrowth.module.css"
 export default function PlantGrowth() {
   const stemRef = useRef<HTMLDivElement>(null)
   const [isAnimating, setIsAnimating] = useState(false)
+  const lastScrollY = useRef(0)
 
   const triggerGrowth = useCallback(() => {
     if (stemRef.current && !isAnimating) {
@@ -24,24 +25,35 @@ export default function PlantGrowth() {
     triggerGrowth()
   }, [triggerGrowth])
 
-  // Trigger when scrolling to top
+  // Trigger when scrolling up to hero section
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout
-    
-    const handleScroll = () => {
-      clearTimeout(scrollTimeout)
-      
-      scrollTimeout = setTimeout(() => {
-        if (window.scrollY === 0) {
-          triggerGrowth()
-        }
-      }, 150)
-    }
+    const heroSection = document.querySelector('main')
+    if (!heroSection) return
 
-    window.addEventListener("scroll", handleScroll)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Check if we're scrolling up
+          const currentScrollY = window.scrollY
+          const isScrollingUp = currentScrollY < lastScrollY.current
+          lastScrollY.current = currentScrollY
+
+          // Trigger animation when hero is visible AND scrolling up
+          if (entry.isIntersecting && isScrollingUp) {
+            triggerGrowth()
+          }
+        })
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of hero is visible
+        rootMargin: '0px'
+      }
+    )
+
+    observer.observe(heroSection)
+
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearTimeout(scrollTimeout)
+      observer.disconnect()
     }
   }, [triggerGrowth])
 
