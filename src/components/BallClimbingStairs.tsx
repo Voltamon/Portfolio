@@ -3,18 +3,15 @@
 import { motion } from "framer-motion"
 
 export default function BallClimbingStairs() {
-  // Define stair positions (increasing height from bottom to top)
-  const stairs = [
-    { x: 10, y: 85, width: 15, height: 15 },
-    { x: 25, y: 72, width: 15, height: 28 },
-    { x: 40, y: 59, width: 15, height: 41 },
-    { x: 55, y: 46, width: 15, height: 54 },
-    { x: 70, y: 33, width: 15, height: 67 },
-    { x: 85, y: 20, width: 15, height: 80 },
+  // Define pillars - descending as they move to the right
+  const pillars = [
+    { x: 10, y: 20, width: 8, height: 80 },  // Tallest pillar on left
+    { x: 25, y: 30, width: 8, height: 70 },
+    { x: 40, y: 40, width: 8, height: 60 },
+    { x: 55, y: 50, width: 8, height: 50 },
+    { x: 70, y: 60, width: 8, height: 40 },
+    { x: 85, y: 70, width: 8, height: 30 },  // Shortest pillar on right
   ]
-
-  // Ball stays relatively centered while stairs move down
-  const ballY = 50 // Fixed Y position in middle of viewport
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden opacity-20">
@@ -23,58 +20,58 @@ export default function BallClimbingStairs() {
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
       >
-        {/* Animated stairs - shift down creating infinite effect */}
-        {stairs.map((stair, index) => (
+        {/* Animated pillars - shift right and down creating infinite effect */}
+        {pillars.map((pillar, index) => (
           <motion.rect
             key={index}
-            x={stair.x}
-            width={stair.width}
-            height={stair.height}
+            width={pillar.width}
+            height={pillar.height}
             fill="#0A1931"
             opacity="0.8"
             animate={{
-              y: [stair.y, stair.y + 100],
+              x: [pillar.x, pillar.x + 100],
+              y: [pillar.y, pillar.y + 10],
             }}
             transition={{
-              duration: 8,
+              duration: 10,
               repeat: Infinity,
               ease: "linear",
-              delay: index * 0.3,
+              delay: index * 0.4,
             }}
           />
         ))}
         
-        {/* Second set of stairs for seamless loop */}
-        {stairs.map((stair, index) => (
+        {/* Second set of pillars for seamless loop */}
+        {pillars.map((pillar, index) => (
           <motion.rect
             key={`second-${index}`}
-            x={stair.x}
-            width={stair.width}
-            height={stair.height}
+            width={pillar.width}
+            height={pillar.height}
             fill="#0A1931"
             opacity="0.8"
             animate={{
-              y: [stair.y - 100, stair.y],
+              x: [pillar.x - 100, pillar.x],
+              y: [pillar.y - 10, pillar.y],
             }}
             transition={{
-              duration: 8,
+              duration: 10,
               repeat: Infinity,
               ease: "linear",
-              delay: index * 0.3,
+              delay: index * 0.4,
             }}
           />
         ))}
 
-        {/* Single ball climbing - moving horizontally as stairs descend */}
+        {/* Ball jumping upward trying to reach higher pillars */}
         <motion.circle
-          r="2.5"
+          r="3"
           fill="#0A1931"
-          cy={ballY}
           animate={{
-            cx: [17.5, 32.5, 47.5, 62.5, 77.5, 92.5, 17.5],
+            cx: [14, 29, 44, 59, 74, 89, 14],
+            cy: [18, 28, 38, 48, 58, 68, 18], // Jumping up to reach each pillar top
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
             times: [0, 0.16, 0.32, 0.48, 0.64, 0.8, 1],
