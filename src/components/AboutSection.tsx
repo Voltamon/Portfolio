@@ -85,36 +85,57 @@ export default function AboutSection() {
         className="sticky top-0 h-screen bg-[#0A1931] py-16 px-8 md:px-16 lg:px-24 flex items-center"
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full">
-          {/* Spiral Line Drawing - Left Side */}
+          {/* Flowing Line Drawing - Left Side */}
           <div className="flex items-center justify-center h-full">
             <svg
               ref={svgRef}
-              viewBox="0 0 400 600"
-              className="w-full max-w-md h-auto"
+              viewBox="0 0 300 700"
+              className="w-full max-w-sm h-auto"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Spiral line: starts curvy from top, does one spiral, then goes straight down */}
+              {/* Organic flowing line following the reference image pattern */}
               <path
-                d="M200 50 
-                   C220 70, 230 90, 235 115
-                   C240 140, 235 165, 220 185
-                   C205 205, 180 215, 160 210
-                   C140 205, 125 185, 120 160
-                   C115 135, 120 105, 140 85
-                   C160 65, 190 60, 215 70
-                   C240 80, 260 105, 265 135
-                   C270 165, 260 195, 240 220
-                   C220 245, 190 260, 155 260
-                   C120 260, 90 240, 75 210
-                   C60 180, 60 145, 75 115
-                   C90 85, 120 65, 155 60
-                   C190 55, 230 65, 260 90
-                   C290 115, 310 150, 315 190
-                   C320 230, 310 270, 285 305
-                   L285 550"
+                d="M 80 30
+                   C 90 50, 100 80, 105 110
+                   C 110 140, 108 170, 95 195
+                   C 82 220, 60 235, 40 235
+                   C 20 235, 5 220, 0 195
+                   C -5 170, 0 140, 15 120
+                   C 30 100, 55 90, 80 95
+                   C 105 100, 125 115, 135 140
+                   C 145 165, 145 195, 135 220
+                   
+                   C 125 245, 108 265, 85 275
+                   C 62 285, 38 285, 20 275
+                   
+                   C 10 270, 5 260, 8 245
+                   C 11 230, 20 215, 35 205
+                   C 50 195, 70 192, 90 200
+                   C 110 208, 128 225, 138 248
+                   C 148 271, 150 298, 145 325
+                   
+                   C 140 352, 128 378, 108 395
+                   C 88 412, 62 418, 38 415
+                   C 14 412, -5 400, -15 380
+                   C -25 360, -25 335, -15 310
+                   C -5 285, 12 265, 35 255
+                   C 58 245, 85 245, 110 255
+                   C 135 265, 158 285, 172 312
+                   C 186 339, 192 372, 188 405
+                   
+                   C 184 438, 170 468, 148 490
+                   C 126 512, 98 525, 68 530
+                   C 50 533, 35 535, 25 540
+                   C 20 543, 18 548, 20 555
+                   C 22 562, 28 568, 38 575
+                   C 48 582, 62 588, 78 595
+                   C 94 602, 110 608, 125 615
+                   C 140 622, 152 630, 160 640
+                   C 165 647, 168 655, 168 665
+                   L 168 695"
                 stroke="#FEF3C7"
-                strokeWidth="4"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
