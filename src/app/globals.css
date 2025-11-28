@@ -1,3 +1,4 @@
+/* Updated: 2025-11-28T06:55:01.635Z */
 /* Updated: 2025-11-28T04:33:49.021Z */
 /* Updated: 2025-11-28T02:17:04.789Z */
 /* Updated: 2025-11-28T01:54:19.588Z */
@@ -138,9 +139,21 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }
 
