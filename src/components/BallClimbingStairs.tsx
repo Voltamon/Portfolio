@@ -13,117 +13,71 @@ export default function BallClimbingStairs() {
     { x: 85, y: 20, width: 15, height: 80 },
   ]
 
-  // Ball path coordinates (moves to the top-right corner of each stair)
-  const ballPath = [
-    { x: 17.5, y: 82 }, // Start at first stair
-    { x: 32.5, y: 69 },
-    { x: 47.5, y: 56 },
-    { x: 62.5, y: 43 },
-    { x: 77.5, y: 30 },
-    { x: 92.5, y: 17 },
-    { x: 17.5, y: 82 }, // Loop back to start
-  ]
+  // Ball stays relatively centered while stairs move down
+  const ballY = 50 // Fixed Y position in middle of viewport
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden opacity-10">
+    <div className="absolute inset-0 w-full h-full overflow-hidden opacity-20">
       <svg
         className="w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
       >
-        {/* Draw stairs */}
+        {/* Animated stairs - shift down creating infinite effect */}
         {stairs.map((stair, index) => (
-          <rect
+          <motion.rect
             key={index}
             x={stair.x}
-            y={stair.y}
             width={stair.width}
             height={stair.height}
             fill="#0A1931"
-            opacity="0.3"
+            opacity="0.8"
+            animate={{
+              y: [stair.y, stair.y + 100],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+              delay: index * 0.3,
+            }}
+          />
+        ))}
+        
+        {/* Second set of stairs for seamless loop */}
+        {stairs.map((stair, index) => (
+          <motion.rect
+            key={`second-${index}`}
+            x={stair.x}
+            width={stair.width}
+            height={stair.height}
+            fill="#0A1931"
+            opacity="0.8"
+            animate={{
+              y: [stair.y - 100, stair.y],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+              delay: index * 0.3,
+            }}
           />
         ))}
 
-        {/* Animated ball */}
+        {/* Single ball climbing - moving horizontally as stairs descend */}
         <motion.circle
-          r="2"
+          r="2.5"
           fill="#0A1931"
+          cy={ballY}
           animate={{
-            cx: ballPath.map(p => p.x),
-            cy: ballPath.map(p => p.y),
+            cx: [17.5, 32.5, 47.5, 62.5, 77.5, 92.5, 17.5],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
             times: [0, 0.16, 0.32, 0.48, 0.64, 0.8, 1],
-          }}
-        />
-      </svg>
-
-      {/* Multiple balls with delays for continuous effect */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <motion.circle
-          r="2"
-          fill="#0A1931"
-          animate={{
-            cx: ballPath.map(p => p.x),
-            cy: ballPath.map(p => p.y),
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.16, 0.32, 0.48, 0.64, 0.8, 1],
-            delay: 2,
-          }}
-        />
-      </svg>
-
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <motion.circle
-          r="2"
-          fill="#0A1931"
-          animate={{
-            cx: ballPath.map(p => p.x),
-            cy: ballPath.map(p => p.y),
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.16, 0.32, 0.48, 0.64, 0.8, 1],
-            delay: 4,
-          }}
-        />
-      </svg>
-
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <motion.circle
-          r="2"
-          fill="#0A1931"
-          animate={{
-            cx: ballPath.map(p => p.x),
-            cy: ballPath.map(p => p.y),
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.16, 0.32, 0.48, 0.64, 0.8, 1],
-            delay: 6,
           }}
         />
       </svg>
