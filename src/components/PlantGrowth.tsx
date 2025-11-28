@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import styles from "./PlantGrowth.module.css"
 
 export default function PlantGrowth() {
   const stemRef = useRef<HTMLDivElement>(null)
   const [isAnimating, setIsAnimating] = useState(false)
 
-  const handleDropClick = () => {
+  const triggerGrowth = useCallback(() => {
     if (stemRef.current && !isAnimating) {
       setIsAnimating(true)
       stemRef.current.classList.add(styles.rain)
@@ -17,6 +17,36 @@ export default function PlantGrowth() {
         setIsAnimating(false)
       }, 2200)
     }
+  }, [isAnimating])
+
+  // Trigger on page load
+  useEffect(() => {
+    triggerGrowth()
+  }, [triggerGrowth])
+
+  // Trigger when scrolling to top
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout
+    
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout)
+      
+      scrollTimeout = setTimeout(() => {
+        if (window.scrollY === 0) {
+          triggerGrowth()
+        }
+      }, 150)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      clearTimeout(scrollTimeout)
+    }
+  }, [triggerGrowth])
+
+  const handleDropClick = () => {
+    triggerGrowth()
   }
 
   return (
