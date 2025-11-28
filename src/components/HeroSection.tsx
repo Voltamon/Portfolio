@@ -2,6 +2,7 @@
 
 import ParticlesJSBackground from "./ParticlesJSBackground"
 import TypewriterEffect from "./TypewriterEffect"
+import PlantGrowth from "./PlantGrowth"
 
 export default function HeroSection() {
   return (
@@ -16,6 +17,7 @@ export default function HeroSection() {
         </h1>
         <TypewriterEffect />
       </div>
+      <PlantGrowth />
     </section>
   )
 }
