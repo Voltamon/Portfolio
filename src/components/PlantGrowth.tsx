@@ -46,7 +46,7 @@ export default function PlantGrowth() {
   }, [triggerGrowth])
 
   return (
-    <div className={styles.plantGrowthContainer}>
+    <div className={styles.plantGrowthContainer} onClick={triggerGrowth} style={{ cursor: 'pointer' }}>
       <div className={styles.box}>
         <div className={styles.stem} ref={stemRef}>
           <div className={`${styles.leaf} ${styles.leaf01}`}><div className={styles.line}></div></div>
