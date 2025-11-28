@@ -3,78 +3,47 @@
 import { motion } from "framer-motion"
 
 export default function BallClimbingStairs() {
-  // Define pillars - descending as they move to the right
-  const pillars = [
-    { x: 10, y: 20, width: 8, height: 80 },  // Tallest pillar on left
-    { x: 25, y: 30, width: 8, height: 70 },
-    { x: 40, y: 40, width: 8, height: 60 },
-    { x: 55, y: 50, width: 8, height: 50 },
-    { x: 70, y: 60, width: 8, height: 40 },
-    { x: 85, y: 70, width: 8, height: 30 },  // Shortest pillar on right
-  ]
-
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden opacity-20">
+    <div className="absolute inset-0 w-full h-full overflow-hidden opacity-30">
       <svg
         className="w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
       >
-        {/* Animated pillars - shift right and down creating infinite effect */}
-        {pillars.map((pillar, index) => (
-          <motion.rect
-            key={index}
-            width={pillar.width}
-            height={pillar.height}
-            fill="#0A1931"
-            opacity="0.8"
-            animate={{
-              x: [pillar.x, pillar.x + 100],
-              y: [pillar.y, pillar.y + 10],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "linear",
-              delay: index * 0.4,
-            }}
-          />
-        ))}
-        
-        {/* Second set of pillars for seamless loop */}
-        {pillars.map((pillar, index) => (
-          <motion.rect
-            key={`second-${index}`}
-            width={pillar.width}
-            height={pillar.height}
-            fill="#0A1931"
-            opacity="0.8"
-            animate={{
-              x: [pillar.x - 100, pillar.x],
-              y: [pillar.y - 10, pillar.y],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "linear",
-              delay: index * 0.4,
-            }}
-          />
-        ))}
-
-        {/* Ball jumping upward trying to reach higher pillars */}
-        <motion.circle
-          r="3"
-          fill="#0A1931"
+        {/* Bouncing ball with squash and stretch effect */}
+        <motion.ellipse
+          cx="50"
+          rx="3"
+          fill="#ff6000"
           animate={{
-            cx: [14, 29, 44, 59, 74, 89, 14],
-            cy: [18, 28, 38, 48, 58, 68, 18], // Jumping up to reach each pillar top
+            cy: [85, 20, 85],
+            ry: [2.1, 3, 2.1], // Squash when landing, stretch when jumping
           }}
           transition={{
-            duration: 10,
+            duration: 1.2,
             repeat: Infinity,
             ease: "easeInOut",
-            times: [0, 0.16, 0.32, 0.48, 0.64, 0.8, 1],
+            times: [0, 0.5, 1],
+          }}
+        />
+        
+        {/* Shadow under the ball */}
+        <motion.ellipse
+          cx="50"
+          cy="88"
+          rx="4"
+          ry="1"
+          fill="#0A1931"
+          opacity="0.3"
+          animate={{
+            rx: [4, 2, 4],
+            opacity: [0.3, 0.1, 0.3],
+          }}
+          transition={{
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            times: [0, 0.5, 1],
           }}
         />
       </svg>
