@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#ffffff]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#64748B]"
     >
       <BallClimbingStairs />
       <div className="relative z-10 text-center px-8">
