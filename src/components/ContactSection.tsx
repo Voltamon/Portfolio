@@ -31,6 +31,20 @@ export default function ContactSection() {
       ref={sectionRef}
       className="relative min-h-screen bg-teal-800 flex items-center justify-center px-6 md:px-12 lg:px-16 py-16 md:py-20"
     >
+      {/* Curvaceous border at top transitioning from Services section */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] pointer-events-none rotate-180">
+        <svg 
+          className="relative block w-full h-[80px] md:h-[120px]" 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,60 C250,20 500,90 750,50 C900,30 1050,70 1200,40 L1200,120 L0,120 Z" 
+            fill="#0d9488"
+          />
+        </svg>
+      </div>
+
       {/* Swinging Lightbulb Animation - turns on when scrolled to end */}
       <div className="absolute inset-0 pointer-events-auto">
         <LightAnimation bulbOn={bulbOn} />
