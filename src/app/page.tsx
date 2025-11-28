@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Navigation from "@/components/Navigation"
 import HeroSection from "@/components/HeroSection"
 import AboutSection from "@/components/AboutSection"
@@ -9,17 +9,40 @@ import ContactSection from "@/components/ContactSection"
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null)
+  const [growthComplete, setGrowthComplete] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
       const windowHeight = window.innerHeight
       
-      // Push content down based on scroll
-      if (contentRef.current) {
-        // Content starts appearing after one full screen scroll
-        const contentOffset = Math.max(0, scrollY - windowHeight)
-        contentRef.current.style.transform = `translateY(${windowHeight + contentOffset}px)`
+      // Plant growth phase: 0 to windowHeight
+      if (scrollY < windowHeight) {
+        setGrowthComplete(false)
+        
+        // Keep hero fixed and content below viewport during growth
+        if (heroRef.current) {
+          heroRef.current.style.position = 'fixed'
+        }
+        if (contentRef.current) {
+          contentRef.current.style.transform = `translateY(${windowHeight}px)`
+        }
+      } else {
+        // Growth complete - enable normal scrolling
+        if (!growthComplete) {
+          setGrowthComplete(true)
+        }
+        
+        // Transition hero to absolute positioning so it scrolls away
+        if (heroRef.current) {
+          heroRef.current.style.position = 'absolute'
+        }
+        
+        // Bring content into normal flow
+        if (contentRef.current) {
+          contentRef.current.style.transform = `translateY(${windowHeight}px)`
+        }
       }
     }
 
@@ -29,18 +52,20 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [growthComplete])
 
   return (
     <main className="relative">
       <Navigation />
-      <HeroSection />
-      <div ref={contentRef} className="relative z-0 bg-[#FDF8F3]" style={{ transform: 'translateY(100vh)' }}>
+      <div ref={heroRef} className="fixed top-0 left-0 w-full h-screen z-10">
+        <HeroSection />
+      </div>
+      <div ref={contentRef} className="relative z-0 bg-[#FDF8F3] transition-transform duration-300" style={{ transform: 'translateY(100vh)' }}>
         <AboutSection />
         <ServicesSection />
         <ContactSection />
       </div>
-      {/* Spacer to allow scrolling for plant growth */}
+      {/* Spacer to allow scrolling for plant growth + content height */}
       <div style={{ height: '100vh' }} />
     </main>
   )
