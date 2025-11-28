@@ -45,21 +45,8 @@ export default function PlantGrowth() {
     }
   }, [triggerGrowth])
 
-  const handleDropClick = () => {
-    triggerGrowth()
-  }
-
   return (
     <div className={styles.plantGrowthContainer}>
-      <div className={styles.instructions}>
-        💧 Click the water drop to make the plant grow!
-      </div>
-      <button 
-        className={styles.drop} 
-        onClick={handleDropClick}
-        title="Water drop - Click to grow plant"
-        aria-label="Water drop button"
-      />
       <div className={styles.box}>
         <div className={styles.stem} ref={stemRef}>
           <div className={`${styles.leaf} ${styles.leaf01}`}><div className={styles.line}></div></div>
