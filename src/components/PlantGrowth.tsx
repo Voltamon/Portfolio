@@ -32,7 +32,7 @@ export default function PlantGrowth() {
       clearTimeout(scrollTimeout)
       
       scrollTimeout = setTimeout(() => {
-        if (window.scrollY === 0) {
+        if (window.scrollY <= 5) {
           triggerGrowth()
         }
       }, 150)
