@@ -10,63 +10,39 @@ import ContactSection from "@/components/ContactSection"
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
-  const [growthComplete, setGrowthComplete] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
       const windowHeight = window.innerHeight
       
-      // Plant growth phase: 0 to windowHeight
-      if (scrollY < windowHeight) {
-        setGrowthComplete(false)
-        
-        // Keep hero fixed and content below viewport during growth
-        if (heroRef.current) {
-          heroRef.current.style.position = 'fixed'
-        }
-        if (contentRef.current) {
-          contentRef.current.style.transform = `translateY(${windowHeight}px)`
-        }
-      } else {
-        // Growth complete - enable normal scrolling
-        if (!growthComplete) {
-          setGrowthComplete(true)
-        }
-        
-        // Transition hero to absolute positioning so it scrolls away
-        if (heroRef.current) {
-          heroRef.current.style.position = 'absolute'
-        }
-        
-        // Bring content into normal flow
-        if (contentRef.current) {
-          contentRef.current.style.transform = `translateY(${windowHeight}px)`
-        }
-      }
+      // Calculate scroll progress (0 to 1 for the growth phase)
+      const progress = Math.min(scrollY / windowHeight, 1)
+      setScrollProgress(progress)
     }
 
     handleScroll() // Initial call
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [growthComplete])
+  }, [])
 
   return (
     <main className="relative">
       <Navigation />
-      <div ref={heroRef} className="fixed top-0 left-0 w-full h-screen z-10">
+      {/* Hero section - scrolls away naturally after 100vh */}
+      <div ref={heroRef} className="relative w-full h-screen z-10">
         <HeroSection />
       </div>
-      <div ref={contentRef} className="relative z-0 bg-[#FDF8F3] transition-transform duration-300" style={{ transform: 'translateY(100vh)' }}>
+      {/* Content sections - starts immediately after hero */}
+      <div ref={contentRef} className="relative z-0 bg-[#FDF8F3]">
         <AboutSection />
         <ServicesSection />
         <ContactSection />
       </div>
-      {/* Spacer to allow scrolling for plant growth + content height */}
-      <div style={{ height: '100vh' }} />
     </main>
   )
 }
