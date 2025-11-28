@@ -1,6 +1,6 @@
 "use client"
 
-import BallClimbingStairs from "./BallClimbingStairs"
+import ParticlesJSBackground from "./ParticlesJSBackground"
 import TypewriterEffect from "./TypewriterEffect"
 
 export default function HeroSection() {
@@ -9,9 +9,9 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#64748B]"
     >
-      <BallClimbingStairs />
+      <ParticlesJSBackground />
       <div className="relative z-10 text-center px-8">
-        <h1 className="editorial-title text-5xl md:text-7xl lg:text-8xl text-[#0A1931] mb-6">
+        <h1 className="editorial-title text-5xl md:text-7xl lg:text-8xl text-[#FDF8F3] mb-6">
           Beschi SSC Ltd
         </h1>
         <TypewriterEffect />
