@@ -51,7 +51,7 @@ export default function ContactSection() {
       </div>
 
       {/* Single column layout with better spacing */}
-      <div className="relative z-10 max-w-6xl w-full">
+      <div className="relative z-10 max-w-7xl w-full mx-auto">
         
         {/* Text content - centered and compact */}
         <div className="space-y-8 md:space-y-12 text-left max-w-3xl">

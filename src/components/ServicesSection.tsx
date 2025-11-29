@@ -169,7 +169,7 @@ export default function ServicesSection() {
       className="relative min-h-[300vh] bg-[#FDF8F3]">
 
       <div className="sticky top-0 h-screen flex items-center justify-center px-8">
-        <div className="max-w-7xl w-full">
+      <div className="max-w-7xl w-full mx-auto">
           <h2
             ref={titleRef}
             className="editorial-title text-4xl md:text-6xl lg:text-7xl text-[#0A1931] mb-16 text-center !w-full !h-5"
