@@ -55,7 +55,7 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative w-full h-[200vh] bg-[#0A1931]">
 
-      <div className="sticky top-0 h-screen bg-[#64748B] py-16 px-8 md:px-16 lg:px-24 flex items-center">
+      <div className="sticky top-0 left-0 w-full h-screen bg-[#64748B] py-16 flex items-center overflow-x-hidden">
           <div className="relative px-8 md:px-16 lg:px-24 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="w-full">
             <h1
