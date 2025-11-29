@@ -25,6 +25,7 @@ export default function LightAnimation({ bulbOn }: LightAnimationProps) {
   const cordRef = useRef<HTMLDivElement>(null);
   const bulbRef = useRef<HTMLDivElement>(null);
 
+  // Continuous swinging animation - runs once
   useEffect(() => {
     if (!bulbContainerRef.current || !glowRef.current) return;
 
@@ -65,7 +66,16 @@ export default function LightAnimation({ bulbOn }: LightAnimationProps) {
         yoyo: true,
         repeat: -1,
       });
+    });
 
+    return () => ctx.revert();
+  }, []);
+
+  // State-dependent animations - runs when bulbOn changes
+  useEffect(() => {
+    if (!bulbContainerRef.current || !cordRef.current || !bulbRef.current) return;
+
+    const ctx = gsap.context(() => {
       // Animate cord opacity based on bulb state with delay
       gsap.to(cordRef.current, {
         opacity: bulbOn ? 0.5 : 0.3,
@@ -80,7 +90,7 @@ export default function LightAnimation({ bulbOn }: LightAnimationProps) {
           duration: 0.8,
           ease: "elastic.out(1, 0.5)",
         });
-        
+
         // Pulsing animation when light is on
         gsap.to(bulbRef.current, {
           opacity: 0.95,

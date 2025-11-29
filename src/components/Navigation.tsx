@@ -4,12 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuItems = [
-{ name: "Home", href: "#hero" },
-{ name: "About", href: "#about" },
-{ name: "Services", href: "#services" },
-{ name: "Portfolio", href: "#portfolio" },
-{ name: "Contact", href: "#contact" }];
-
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#services" },
+  { name: "Contact", href: "#contact" }
+];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,36 +60,35 @@ export default function Navigation() {
 
       <AnimatePresence>
         {isOpen &&
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-40 bg-[#0A1931]/95 backdrop-blur-lg flex items-center justify-center"
-          onClick={() => setIsOpen(false)}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-[#a47864]/95 backdrop-blur-lg flex items-center justify-center"
+            onClick={() => setIsOpen(false)}>
 
             <motion.nav
-            variants={container}
-            initial="hidden"
-            animate="show"
-            exit="exit"
-            className="flex flex-col items-center gap-8"
-            onClick={(e) => e.stopPropagation()}>
+              variants={container}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              className="flex flex-col items-center gap-8"
+              onClick={(e) => e.stopPropagation()}>
 
               {menuItems.map((menuItem) =>
-            <motion.a
-              key={menuItem.name}
-              variants={item}
-              href={menuItem.href}
-              onClick={() => setIsOpen(false)}
-              className="editorial-title text-5xl md:text-7xl text-[#FDF8F3] hover:text-[#FEF3C7] transition-colors">
+                <motion.a
+                  key={menuItem.name}
+                  variants={item}
+                  href={menuItem.href}
+                  onClick={() => setIsOpen(false)}
+                  className="editorial-title text-5xl md:text-7xl text-[#FDF8F3] hover:text-[#FEF3C7] transition-colors">
 
                   {menuItem.name}
                 </motion.a>
-            )}
+              )}
             </motion.nav>
           </motion.div>
         }
       </AnimatePresence>
     </>);
-
 }

@@ -34,7 +34,7 @@ export default function AboutSection() {
       })
 
       // Paper plane animation - flies in and rotates
-      gsap.fromTo(svgRef.current, 
+      gsap.fromTo(svgRef.current,
         {
           x: -200,
           y: 200,
@@ -70,13 +70,13 @@ export default function AboutSection() {
         ref={sectionRef}
         className="sticky top-0 h-screen bg-[#0A1931] py-16 px-8 md:px-16 lg:px-24 flex items-center"
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
           {/* Paper Plane SVG - Left Side */}
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full order-2 md:order-1 mt-8 md:mt-0">
             <svg
               ref={svgRef}
               viewBox="0 0 200 200"
-              className="w-full max-w-sm h-auto"
+              className="w-full max-w-[250px] md:max-w-sm h-auto"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -105,30 +105,30 @@ export default function AboutSection() {
           </div>
 
           {/* Text Content - Right Side */}
-          <div ref={textRef} className="space-y-4">
-            <h2 className="editorial-title text-4xl md:text-6xl text-[#FDF8F3] mb-6">
-              About Us
+          <div ref={textRef} className="space-y-4 order-1 md:order-2 text-center md:text-left">
+            <h2 className="editorial-title text-4xl md:text-6xl lg:text-7xl text-[#FDF8F3] mb-4 md:mb-6">
+              About Me
             </h2>
-            <div className="editorial-body text-base md:text-lg text-[#FDF8F3]/80 space-y-4">
+            <div className="editorial-body text-lg md:text-xl lg:text-2xl text-[#FDF8F3]/80 space-y-4">
               <p>
-                Beschi SSC Ltd emerged from a simple belief: great ideas deserve great partnerships. We're a venture studio that doesn't just invest—we build alongside founders.
+                With over 5 years of experience in software development, I specialize in creating modern scalable applications that combine cutting-edge technology with exceptional user experience.
               </p>
               <p className="text-[#FEF3C7] font-semibold">
-                We've helped launch over 40 ventures, turning concepts into market leaders. We bring capital, expertise, and commitment to see your vision through—from idea to impact.
+                I'm constantly learning and adapting to new technologies, always seeking to improve my craft and deliver solutions that exceed expectations.
               </p>
             </div>
           </div>
         </div>
-        
+
         {/* Curvaceous border at bottom transitioning to Services section */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-          <svg 
-            className="relative block w-full h-[80px] md:h-[120px]" 
-            viewBox="0 0 1200 120" 
+          <svg
+            className="relative block w-full h-[80px] md:h-[120px]"
+            viewBox="0 0 1200 120"
             preserveAspectRatio="none"
           >
-            <path 
-              d="M0,30 C200,80 400,10 600,40 C800,70 1000,20 1200,50 L1200,120 L0,120 Z" 
+            <path
+              d="M0,30 C200,80 400,10 600,40 C800,70 1000,20 1200,50 L1200,120 L0,120 Z"
               fill="#FDF8F3"
             />
           </svg>

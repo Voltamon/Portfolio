@@ -3,11 +3,9 @@
 import { useState, useEffect } from "react"
 
 const quotes = [
-  "Innovation is the bridge between dreams and reality.",
-  "Great ventures begin with bold vision.",
-  "We turn ambition into achievement.",
-  "Where ideas meet execution, magic happens.",
-  "Building the future, one venture at a time.",
+  "Software Engineer",
+  "Open Source Contributor",
+  "Operations Manager",
 ]
 
 export default function TypewriterEffect() {

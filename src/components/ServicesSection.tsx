@@ -10,31 +10,31 @@ if (typeof window !== "undefined") {
 }
 
 const services = [
-{
-  name: "Venture Building",
-  description:
-  "We co-create companies from the ground up, providing hands-on support from ideation to market launch."
-},
-{
-  name: "Capital Investment",
-  description:
-  "Strategic funding solutions tailored to your growth stage, from seed to series rounds."
-},
-{
-  name: "Technical Development",
-  description:
-  "World-class engineering teams ready to build your MVP or scale your platform."
-},
-{
-  name: "Market Strategy",
-  description:
-  "Data-driven go-to-market strategies that position your product for maximum impact."
-},
-{
-  name: "Operational Excellence",
-  description:
-  "Systems and processes that scale, from hiring to infrastructure to customer success."
-}];
+  {
+    name: "Software Development",
+    description:
+      "Building robust systems. Full-stack architecture, clean code, scalable infrastructure."
+  },
+  {
+    name: "Business Management",
+    description:
+      "Running the engine. Finance, operations, sustainability, growth."
+  },
+  {
+    name: "Project Organization",
+    description:
+      "From vision to velocity. Task orchestration, timeline precision, scope clarity."
+  },
+  {
+    name: "Marketing Operations",
+    description:
+      "Voices & velocity. Narrative craft, audience insight, revenue motion."
+  },
+  {
+    name: "Continuous Learning",
+    description:
+      "Evolution in motion. Resilience, learning velocity, strategic pivoting."
+  }];
 
 
 export default function ServicesSection() {
@@ -54,6 +54,12 @@ export default function ServicesSection() {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
+        snap: {
+          snapTo: 1 / (services.length - 1),
+          duration: { min: 0.2, max: 0.8 },
+          delay: 0,
+          ease: "power1.inOut",
+        },
         onUpdate: (self) => {
           const progress = self.progress;
           setScrollProgress(progress);
@@ -166,10 +172,10 @@ export default function ServicesSection() {
         <div className="max-w-7xl w-full">
           <h2
             ref={titleRef}
-            className="editorial-title text-5xl md:text-7xl text-[#0A1931] mb-16 text-center !w-full !h-5"
+            className="editorial-title text-4xl md:text-6xl lg:text-7xl text-[#0A1931] mb-16 text-center !w-full !h-5"
             style={{ perspective: "1000px" }}
           >
-            Our Services
+            My Skills
           </h2>
 
           <div className="flex flex-col items-center gap-8">
@@ -216,7 +222,7 @@ export default function ServicesSection() {
                     dur="2s"
                     repeatCount="indefinite" />
                 </circle>
-                
+
                 {services.map((_, index) => {
                   const pos = servicePositions[index];
                   const isActive = index === activeService;
@@ -225,28 +231,28 @@ export default function ServicesSection() {
                   return (
                     <g key={index}>
                       {isActive &&
-                      <circle
-                        cx={pos.x}
-                        cy={pos.y}
-                        r="18"
-                        fill="none"
-                        stroke="#0A1931"
-                        strokeWidth="2"
-                        opacity="0.8"
-                        className="transition-all duration-500">
+                        <circle
+                          cx={pos.x}
+                          cy={pos.y}
+                          r="18"
+                          fill="none"
+                          stroke="#0A1931"
+                          strokeWidth="2"
+                          opacity="0.8"
+                          className="transition-all duration-500">
                           <animate
-                          attributeName="r"
-                          values="18;24;18"
-                          dur="1.5s"
-                          repeatCount="indefinite" />
+                            attributeName="r"
+                            values="18;24;18"
+                            dur="1.5s"
+                            repeatCount="indefinite" />
                           <animate
-                          attributeName="opacity"
-                          values="0.8;0.4;0.8"
-                          dur="1.5s"
-                          repeatCount="indefinite" />
+                            attributeName="opacity"
+                            values="0.8;0.4;0.8"
+                            dur="1.5s"
+                            repeatCount="indefinite" />
                         </circle>
                       }
-                      
+
                       <circle
                         cx={pos.x}
                         cy={pos.y}
@@ -258,16 +264,16 @@ export default function ServicesSection() {
                         opacity={isPassed || isActive ? 1 : 0.4} />
 
                       {(isActive || isPassed) &&
-                      <circle
-                        cx={pos.x}
-                        cy={pos.y}
-                        r={isActive ? 5 : 3}
-                        fill="#FDF8F3"
-                        className="transition-all duration-500" />
+                        <circle
+                          cx={pos.x}
+                          cy={pos.y}
+                          r={isActive ? 5 : 3}
+                          fill="#FDF8F3"
+                          className="transition-all duration-500" />
                       }
                     </g>);
                 })}
-                
+
                 <defs>
                   <linearGradient id="threadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#0A1931" stopOpacity="0.6" />
@@ -275,7 +281,7 @@ export default function ServicesSection() {
                     <stop offset={`${scrollProgress * 100 + 10}%`} stopColor="#0A1931" stopOpacity="0.9" />
                     <stop offset="100%" stopColor="#0A1931" stopOpacity="0.3" />
                   </linearGradient>
-                  
+
                   <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                     <feGaussianBlur stdDeviation="2" result="coloredBlur" />
                     <feMerge>
@@ -283,7 +289,7 @@ export default function ServicesSection() {
                       <feMergeNode in="SourceGraphic" />
                     </feMerge>
                   </filter>
-                  
+
                   <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
                     <feGaussianBlur stdDeviation="8" result="coloredBlur" />
                     <feMerge>
@@ -307,21 +313,20 @@ export default function ServicesSection() {
                 <h3 className="editorial-title text-3xl md:text-4xl text-[#0A1931] !w-full !h-[77px]">
                   {services[activeService].name}
                 </h3>
-                <p className="editorial-body text-lg md:text-xl text-[#0A1931] leading-relaxed mx-auto !w-full !h-[89px] !max-w-full">
+                <p className="editorial-body text-lg md:text-xl lg:text-2xl text-[#0A1931] leading-relaxed mx-auto !w-full !h-[89px] !max-w-full">
                   {services[activeService].description}
                 </p>
-                
+
                 <div className="flex gap-3 justify-center mt-6 !opacity-0">
                   {services.map((_, index) =>
-                  <div
-                    key={index}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${
-                    index === activeService ?
-                    "bg-[#0A1931] w-16 shadow-lg shadow-[#0A1931]/50" :
-                    index < activeService ?
-                    "bg-[#0A1931] w-12" :
-                    "bg-[#0A1931]/30 w-10"}`
-                    } />
+                    <div
+                      key={index}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${index === activeService ?
+                        "bg-[#0A1931] w-16 shadow-lg shadow-[#0A1931]/50" :
+                        index < activeService ?
+                          "bg-[#0A1931] w-12" :
+                          "bg-[#0A1931]/30 w-10"}`
+                      } />
                   )}
                 </div>
               </motion.div>
