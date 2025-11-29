@@ -22,7 +22,7 @@ export default function ComputerAnimation({ sectionRef }: ComputerAnimationProps
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "top top",
+                    start: "top+=10vh top",
                     end: "bottom bottom",
                     scrub: 1,
                 }

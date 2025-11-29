@@ -64,7 +64,7 @@ export default function AboutSection() {
   }, [])
 
   return (
-    <div ref={containerRef} className="relative h-[200vh]">
+    <div ref={containerRef} className="relative h-[200vh] -mt-1">
       <section
         id="about"
         ref={sectionRef}

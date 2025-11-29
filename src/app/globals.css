@@ -139,7 +139,7 @@
     box-sizing: border-box;
   }
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
   }
   html {
     overflow-x: hidden;
