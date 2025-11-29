@@ -41,8 +41,7 @@ export default function Navigation() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-8 left-1/2 z-50 flex gap-1.5 backdrop-blur-sm rounded-full hover:bg-[#0A1931] transition-colors !opacity-100 !bg-transparent !border-0"
-        style={{ padding: '1rem', transform: 'translateX(-50%)' }}
+        className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 p-4 backdrop-blur-sm rounded-full hover:bg-[#0A1931] transition-colors !opacity-100 !bg-transparent !border-0"
         aria-label="Toggle menu">
 
         <motion.span

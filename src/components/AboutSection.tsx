@@ -64,7 +64,7 @@ export default function AboutSection() {
   }, [])
 
   return (
-    <div ref={containerRef} className="relative h-[200vh]" style={{ willChange: 'transform' }}>
+    <div ref={containerRef} className="relative h-[200vh]">
       <section
         id="about"
         ref={sectionRef}
