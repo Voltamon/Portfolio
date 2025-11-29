@@ -75,7 +75,7 @@ export default function HeroSection() {
 
         {/* Computer Animation - Positioned 5 units above bottom */}
         <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none px-8 md:px-16 lg:px-24">
-          <div className="max-w-7xl mx-auto flex justify-center md:justify-end">
+          <div className="max-w-7xl mx-auto flex justify-center md:justify-end md:pr-24">
             <ComputerAnimation sectionRef={sectionRef} />
           </div>
         </div>
