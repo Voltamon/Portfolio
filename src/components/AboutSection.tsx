@@ -19,7 +19,7 @@ export default function AboutSection() {
 
     const ctx = gsap.context(() => {
       // Text animation from right - triggers immediately when section is in view
-      gsap.from(textRef.current?.querySelectorAll("h2, p"), {
+      gsap.from(textRef.current!.querySelectorAll("h2, p"), {
         x: 150,
         opacity: 0,
         duration: 1.5,
@@ -111,10 +111,10 @@ export default function AboutSection() {
             </h2>
             <div className="editorial-body text-lg md:text-xl lg:text-2xl text-[#FDF8F3]/80 space-y-4">
               <p>
-                With over 5 years of experience in software development, I specialize in creating modern scalable applications that combine cutting-edge technology with exceptional user experience.
+                As a Devpreneur, I am committed to building products to solve genuine problems from real life, blending technical excellence with intuitive design to deliver real value to users and markets.
               </p>
               <p className="text-[#FEF3C7] font-semibold">
-                I'm constantly learning and adapting to new technologies, always seeking to improve my craft and deliver solutions that exceed expectations.
+                I thrive on the challenge of wearing multiple hats—developer, entrepreneur and manager. I focus on shipping lean, efficient solutions that actually make an impact.
               </p>
             </div>
           </div>

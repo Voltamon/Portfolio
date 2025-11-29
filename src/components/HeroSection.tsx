@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TypewriterEffect from "./TypewriterEffect";
 import ComputerAnimation from "./ComputerAnimation";
 
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -52,11 +53,11 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative w-full h-[200vh] bg-[#64748B]">
+      className="relative w-full h-[200vh] bg-[#0A1931]">
 
-      <div className="sticky top-0 h-screen flex items-center justify-start overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-[#64748B]">
         <div className="relative px-8 md:px-16 lg:px-24 max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="w-full pl-12 md:pl-16">
+          <div className="w-full">
             <h1
               ref={titleRef}
               className="editorial-title text-4xl md:text-6xl lg:text-7xl text-[#FDF8F3] mb-6 w-full"
@@ -68,6 +69,13 @@ export default function HeroSection() {
           </div>
 
           <div className="w-full flex justify-center md:justify-end">
+            {/* Computer Animation moved to absolute position below */}
+          </div>
+        </div>
+
+        {/* Computer Animation - Positioned 5 units above bottom */}
+        <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none px-8 md:px-16 lg:px-24">
+          <div className="max-w-7xl mx-auto flex justify-center md:justify-end">
             <ComputerAnimation sectionRef={sectionRef} />
           </div>
         </div>

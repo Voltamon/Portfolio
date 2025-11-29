@@ -11,11 +11,8 @@ export default function Home() {
     <main className="relative">
       <Navigation />
       {/* Hero section wrapper - takes up 200vh for plant growth scroll */}
-      <div className="relative min-h-[200vh] bg-[#64748B]">
-        {/* Sticky hero content that stays in place while scrolling */}
-        <div className="sticky top-0 h-screen w-full">
-          <HeroSection />
-        </div>
+      <div className="relative min-h-[200vh] bg-[#0A1931]">
+        <HeroSection />
       </div>
       {/* Content sections - starts after hero scroll area */}
       <div className="relative z-0 bg-[#FDF8F3]">

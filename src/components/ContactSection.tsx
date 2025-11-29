@@ -77,7 +77,7 @@ export default function ContactSection() {
             animate={bulbOn ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}>
             <a
-              href="mailto:hello@beschi-ssc.com"
+              href="mailto:deswarnavo@gmail.com"
               className="inline-block px-8 md:px-12 py-4 md:py-6 bg-[#FDF8F3] text-[#0A1931] editorial-body text-lg md:text-xl font-semibold rounded-full hover:bg-[#FEF3C7] transition-colors">
               Get In Touch
             </a>
@@ -88,9 +88,9 @@ export default function ContactSection() {
             animate={bulbOn ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="pt-8 md:pt-12 space-y-2 md:space-y-3 text-[#FDF8F3]/60">
-            <p className="editorial-body text-sm md:text-base">hello@beschi-ssc.com</p>
-            <p className="editorial-body text-sm md:text-base">+1 (555) 123-4567</p>
-            <p className="editorial-body text-sm md:text-base">123 Innovation Drive, Tech City, TC 12345</p>
+            <p className="editorial-body text-sm md:text-base">deswarnavo@gmail.com</p>
+            <p className="editorial-body text-sm md:text-base">+91 (877)-725-0831</p>
+            <p className="editorial-body text-sm md:text-base">Kolkata, West Bengal, India 700078</p>
           </motion.div>
         </div>
       </div>
