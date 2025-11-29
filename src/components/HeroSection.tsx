@@ -58,7 +58,7 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative w-full h-[200vh] bg-[#0A1931] overflow-x-hidden">
+      className="relative w-full h-[200vh] bg-[#0A1931] overflow-x-hidden box-border">
 
       {/* Sticky full-screen hero area */}
       <div className="sticky top-0 left-0 w-full h-screen bg-[#64748B] py-16 px-8 md:px-16 lg:px-24 flex items-center box-border overflow-x-hidden">
@@ -85,7 +85,7 @@ export default function HeroSection() {
         </div>
 
         {/* Computer Animation - constrained to the same centered width */}
-        <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none">
+        <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none box-border">
           <div className="max-w-7xl mx-auto flex justify-center md:justify-end md:pr-24 overflow-hidden">
             <ComputerAnimation sectionRef={sectionRef} />
           </div>
