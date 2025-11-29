@@ -48,12 +48,6 @@ export default function HeroSection() {
         end: () => `+=${window.innerHeight}`,
         pin: stickyEl || sectionRef.current,
         pinSpacing: true,
-        snap: {
-          snapTo: 1,
-          duration: { min: 0.2, max: 0.8 },
-          delay: 0,
-          ease: "power1.inOut",
-        },
       });
     }, sectionRef);
 
