@@ -166,9 +166,10 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative min-h-[300vh] bg-[#FDF8F3]">
+      className="relative min-h-[300vh] bg-[#FDF8F3]"
+      style={{ willChange: 'transform' }}>
 
-      <div className="sticky top-0 h-screen flex items-center justify-center px-8">
+      <div className="sticky top-0 h-screen flex items-center justify-center px-8" style={{ willChange: 'transform' }}>
         <div className="max-w-7xl w-full">
           <h2
             ref={titleRef}

@@ -53,9 +53,10 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative w-full h-[200vh] bg-[#0A1931]">
+      className="relative w-full h-[200vh] bg-[#0A1931]"
+      style={{ willChange: 'transform' }}>
 
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-[#64748B]">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-[#64748B]" style={{ willChange: 'transform' }}>
         <div className="relative px-8 md:px-16 lg:px-24 max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="w-full">
             <h1
