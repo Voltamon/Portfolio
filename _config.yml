@@ -1,0 +1,19 @@
+title: Voltamon@48
+description: Software Engineer & Entrepreneur
+url: https://voltamon.dev
+baseurl: /voltamon48
+theme: jekyll-theme-minimal
+markdown: kramdown
+
+# Exclude from Jekyll processing
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+  - vite.config.ts
+  - src
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .eslintrc.cjs
