@@ -47,7 +47,7 @@ export default function HeroSection() {
         start: 'top top',
         end: 'bottom bottom',
         pin: stickyEl || sectionRef.current,
-        pinSpacing: false,
+        pinSpacing: true,
       });
     }, sectionRef);
 

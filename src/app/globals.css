@@ -135,8 +135,14 @@
 }
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
   * {
     @apply border-border outline-ring/50;
+  }
+  html {
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;
