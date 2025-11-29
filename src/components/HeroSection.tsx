@@ -53,10 +53,10 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative w-full h-[200vh] bg-[#0A1931] overflow-hidden">
+      className="relative w-full h-[200vh] bg-[#0A1931]">
 
-      <div className="sticky top-0 left-0 w-full h-screen bg-[#64748B] py-16 px-8 md:px-16 lg:px-24 flex items-center overflow-hidden">
-        <div className="relative max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="sticky top-0 h-screen bg-[#64748B] py-16 px-8 md:px-16 lg:px-24 flex items-center">
+          <div className="relative px-8 md:px-16 lg:px-24 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="w-full">
             <h1
               ref={titleRef}
@@ -75,7 +75,7 @@ export default function HeroSection() {
 
         {/* Computer Animation - Positioned 5 units above bottom */}
         <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none">
-          <div className="max-w-7xl mx-auto flex justify-center md:justify-end md:pr-24 px-8 md:px-16 lg:px-24">
+            <div className="max-w-7xl mx-auto flex justify-center md:justify-end md:pr-24">
             <ComputerAnimation sectionRef={sectionRef} />
           </div>
         </div>
