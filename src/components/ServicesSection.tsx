@@ -48,11 +48,15 @@ export default function ServicesSection() {
   useEffect(() => {
     if (!sectionRef.current || !svgRef.current) return;
 
+    const stickyEl = sectionRef.current.querySelector('.sticky') as HTMLElement | null;
+
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
         end: "bottom bottom",
+        pin: stickyEl || sectionRef.current,
+        pinSpacing: true,
         scrub: 1,
         snap: {
           snapTo: 1 / (services.length - 1),
@@ -168,7 +172,7 @@ export default function ServicesSection() {
       ref={sectionRef}
       className="relative min-h-[300vh] bg-[#FDF8F3]">
 
-      <div className="sticky top-0 h-screen flex items-center justify-center px-8">
+      <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center px-8">
       <div className="max-w-7xl w-full mx-auto">
           <h2
             ref={titleRef}
