@@ -109,7 +109,7 @@ export default function HeroSection() {
 
         {/* Computer Animation - constrained to the same centered width */}
         <div className="absolute bottom-5 left-0 w-full z-10 pointer-events-none">
-          <div className="max-w-7xl mx-auto flex justify-center md:justify-end md:pr-24 overflow-hidden">
+          <div className="max-w-7xl mx-auto flex justify-center md:justify-end md:pr-16 overflow-hidden">
             <ComputerAnimation sectionRef={sectionRef} />
           </div>
         </div>

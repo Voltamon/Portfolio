@@ -66,7 +66,7 @@ export default function ComputerAnimation({ sectionRef }: ComputerAnimationProps
     }, [sectionRef]);
 
     return (
-        <div ref={containerRef} className="w-full max-w-[320px] md:max-w-sm flex justify-end items-end pr-4 md:pr-0">
+        <div ref={containerRef} className="w-full max-w-[320px] md:max-w-sm flex justify-end items-end pr-1 md:pr-0">
             <svg
                 version="1.1"
                 id="computer-svg"
