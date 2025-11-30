@@ -64,7 +64,7 @@ export default function HeroSection() {
       <div className="sticky top-0 left-0 w-full h-screen bg-[#64748B] py-16 px-8 md:px-16 lg:px-24 flex items-center box-border overflow-x-hidden">
 
         <div className="relative max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="w-full">
+          <div className="w-full -translate-y-[25vh]">
             <h1
               ref={titleRef}
               className="editorial-title text-4xl md:text-6xl lg:text-7xl text-[#FDF8F3] mb-6 w-full"
@@ -79,9 +79,9 @@ export default function HeroSection() {
             <TypewriterEffect />
           </div>
 
-          <div className="w-full flex justify-center md:justify-end">
+          {/* <div className="w-full flex justify-center md:justify-end"> */}
             {/* intentionally empty; ComputerAnimation positioned absolutely below center */}
-          </div>
+          {/* </div> */}
         </div>
 
         {/* Computer Animation - constrained to the same centered width */}
