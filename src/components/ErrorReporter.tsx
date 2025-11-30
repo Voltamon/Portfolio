@@ -19,7 +19,14 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
 
         const send = (payload: unknown) => window.parent.postMessage(payload, "*");
 
-        const onError = (e: ErrorEvent) =>
+        const onError = (e: ErrorEvent) => {
+            if (
+                e.message.includes("Orchids") ||
+                e.message.includes("orchids") ||
+                e.filename?.includes("Orchids") ||
+                e.filename?.includes("orchids")
+            )
+                return;
             send({
                 type: "ERROR_CAPTURED",
                 error: {
@@ -32,17 +39,21 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
                 },
                 timestamp: Date.now(),
             });
+        };
 
-        const onReject = (e: PromiseRejectionEvent) =>
+        const onReject = (e: PromiseRejectionEvent) => {
+            const msg = e.reason?.message ?? String(e.reason);
+            if (msg.includes("Orchids") || msg.includes("orchids")) return;
             send({
                 type: "ERROR_CAPTURED",
                 error: {
-                    message: e.reason?.message ?? String(e.reason),
+                    message: msg,
                     stack: e.reason?.stack,
                     source: "unhandledrejection",
                 },
                 timestamp: Date.now(),
             });
+        };
 
         const pollOverlay = () => {
             const overlay = document.querySelector("[data-nextjs-dialog-overlay]");
@@ -52,6 +63,7 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
                 ) ?? null;
             const txt = node?.textContent ?? node?.innerHTML ?? "";
             if (txt && txt !== lastOverlayMsg.current) {
+                if (txt.includes("Orchids") || txt.includes("orchids")) return;
                 lastOverlayMsg.current = txt;
                 send({
                     type: "ERROR_CAPTURED",
@@ -75,6 +87,14 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
     /* ─ extra postMessage when on the global-error route ─ */
     useEffect(() => {
         if (!error) return;
+        if (
+            error.message.includes("Orchids") ||
+            error.message.includes("orchids") ||
+            error.digest?.includes("Orchids") ||
+            error.digest?.includes("orchids")
+        )
+            return;
+
         window.parent.postMessage(
             {
                 type: "global-error-reset",
@@ -94,6 +114,15 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
     /* ─ ordinary pages render nothing ─ */
     if (!error) return null;
 
+    /* ─ filter out Orchids errors from UI ─ */
+    if (
+        error.message.includes("Orchids") ||
+        error.message.includes("orchids") ||
+        error.digest?.includes("Orchids") ||
+        error.digest?.includes("orchids")
+    )
+        return null;
+
     /* ─ global-error UI ─ */
     return (
         <html>
@@ -104,7 +133,7 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
                             Something went wrong!
                         </h1>
                         <p className="text-muted-foreground">
-                            An unexpected error occurred. Please try again fixing with Orchids
+                            An unexpected error occurred.
                         </p>
                     </div>
                     <div className="space-y-2">
