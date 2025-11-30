@@ -13,6 +13,7 @@ if (typeof window !== "undefined") {
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const quoteRef = useRef<HTMLDivElement | null>(null);
 
   const titleText = useMemo(() => "Voltamon@48", []);
 
@@ -31,6 +32,23 @@ export default function HeroSection() {
         duration: 1.1,
         ease: "power4.out",
         stagger: { amount: 0.6, from: "start" },
+      }
+    );
+  }, []);
+
+  // Quote animation
+  useEffect(() => {
+    if (!quoteRef.current) return;
+
+    gsap.fromTo(
+      quoteRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 2.5,
+        ease: "power3.out",
       }
     );
   }, []);
@@ -64,7 +82,7 @@ export default function HeroSection() {
       <div className="sticky top-0 left-0 w-full h-screen bg-[#64748B] py-16 px-8 md:px-16 lg:px-24 flex items-center box-border overflow-x-hidden">
 
         <div className="relative max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="w-full -translate-y-[25vh]">
+          <div className="w-full -translate-y-[15vh]">
             <h1
               ref={titleRef}
               className="editorial-title text-4xl md:text-6xl lg:text-7xl text-[#FDF8F3] mb-6 w-full"
@@ -77,11 +95,16 @@ export default function HeroSection() {
             </h1>
 
             <TypewriterEffect />
-          </div>
 
-          {/* <div className="w-full flex justify-center md:justify-end"> */}
-            {/* intentionally empty; ComputerAnimation positioned absolutely below center */}
-          {/* </div> */}
+            <div ref={quoteRef} className="mt-8 opacity-0 flex flex-col items-start">
+              <span className="text-6xl text-[#F4A634] font-serif leading-none -mb-4">“</span>
+              <div className="text-[#FDF8F3]/80 text-lg md:text-xl font-light italic space-y-1">
+                <p>Start where you are.</p>
+                <p>Use what you have.</p>
+                <p>Do what you can.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Computer Animation - constrained to the same centered width */}
